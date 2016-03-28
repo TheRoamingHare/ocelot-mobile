@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Activity Logs">
+        <menu>
+            <item
+                android:id="@+id/new_logs"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Add Activity Log" />
+            <item
+                android:id="@+id/log_calendar"
+                android:icon="@drawable/ic_menu_send"
+                android:title="View old logs" />
+        </menu>
+    </item>
+
+    <item android:title="Thought Records">
+        <menu>
+            <item
+                android:id="@+id/new_record"
+                android:icon="@drawable/ic_menu_share"
+                android:title="New Thought Record" />
+            <item
+                android:id="@+id/record_calendar"
+                android:icon="@drawable/ic_menu_send"
+                android:title="View old records" />
+        </menu>
+    </item>
+
+</menu>
