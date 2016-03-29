@@ -20,6 +20,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static String col_strength2 = "Strength After";
     private static String col_tr_date = "Date";
 
+    private static String al_table = "Activity Logs";
+    private static String col_al_id = "ID";
+    private static String col_al_activity = "Activity";
+    private static String col_mood = "Mood";
+    private static String col_al_date = "Date";
 
     public DatabaseHelper(Context context) {
         super(context, dbName, null,1);
@@ -29,8 +34,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE "+ tr_table +" ("+col_tr_id+ " INTEGER PRIMARY KEY AUTOINCREMENT, "+
                 col_tr_activity+ " TEXT, " + col_emotion + " TEXT, " + col_strength +" INTEGER, " +
-                col_thoughts +" TEXT, " + col_alternatives +" TEXT, "+ col_strength2 +"INTEGER, " +
-                col_tr_date +"DEFAULT CURRENT_TIMESTAMP NOT NULL)");
+                col_thoughts +" TEXT, " + col_alternatives +" TEXT, "+ col_strength2 +" INTEGER, " +
+                col_tr_date +" DEFAULT CURRENT_TIMESTAMP NOT NULL)");
+
+        db.execSQL("CREATE TABLE" + al_table + " (" + col_al_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                col_al_activity + " TEXT, " + col_mood + " INTEGER, " +
+                col_al_date + " DEFAULT CURRENT_TIMESTAMP NOT NULL)");
     }
 
     @Override
