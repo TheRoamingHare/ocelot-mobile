@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static String col_strength2 = "Strength_After";
     private static String col_tr_date = "Date";
 
-    private static String al_table = "Activity Logs";
+    private static String al_table = "Activity Log";
     private static String col_al_id = "ID";
     private static String col_al_activity = "Activity";
     private static String col_mood = "Mood";
@@ -37,7 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE" + al_table + " (" + col_al_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        db.execSQL("CREATE TABLE " + al_table + " (" + col_al_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 col_al_activity + " TEXT, " + col_mood + " INTEGER, " +
                 col_al_date + " DEFAULT CURRENT_TIMESTAMP NOT NULL);");
         db.execSQL("CREATE TABLE "+ tr_table +"("+col_tr_id+ " INTEGER PRIMARY KEY AUTOINCREMENT, "+
