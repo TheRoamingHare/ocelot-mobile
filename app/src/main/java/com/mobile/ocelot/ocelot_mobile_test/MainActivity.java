@@ -97,13 +97,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.new_logs) {
-            // Handle the camera action
+
         } else if (id == R.id.log_calendar) {
 
         } else if (id == R.id.new_record) {
-
+            startActivity(new Intent(this, NewThoughtRecord.class));
         } else if (id == R.id.record_calendar) {
-
+            startActivity(new Intent(this, RecordDatePicker.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
