@@ -25,9 +25,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
     private static final String TAG = "MainActivity";
     public SQLiteDatabase app_db;
-    public Context cont;
-    public DatabaseHelper mInstance = new DatabaseHelper(cont.getApplicationContext());
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +44,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        app_db = mInstance.getWritableDatabase();
+        DatabaseHelper db_help = new DatabaseHelper(this.getApplicationContext());
+        app_db = db_help.getWritableDatabase();
     }
 
     @Override
@@ -138,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onDestroy() {
+        app_db.close();
         super.onDestroy();
         Log.d(TAG, "onDestroy() called");
     }
