@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/TextViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_new_tr"
+        android:textSize="10pt"
+        android:paddingTop="60dp">
+    </TextView>
+
+    <EditText
+        android:id="@+id/tr_activity"
+        android:layout_height="wrap_content"
+        android:hint="@string/new_tr_act"
+        android:inputType="textPersonName"
+        android:layout_width="fill_parent">
+    </EditText>
+
+    <EditText
+        android:id="@+id/tr_thoughts"
+        android:layout_height="wrap_content"
+        android:hint="@string/new_tr_thoughts"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:layout_width="fill_parent">
+    </EditText>
+
+    <EditText
+        android:id="@+id/tr_feeling"
+        android:layout_height="wrap_content"
+        android:hint="@string/new_tr_feeling"
+        android:inputType="textPersonName"
+        android:layout_width="fill_parent">
+    </EditText>
+
+    <EditText
+        android:id="@+id/tr_strength1"
+        android:layout_height="wrap_content"
+        android:hint="@string/new_tr_strength1"
+        android:inputType="textPersonName"
+        android:layout_width="fill_parent">
+    </EditText>
+
+    <EditText
+        android:id="@+id/tr_alt_resp"
+        android:layout_height="wrap_content"
+        android:hint="@string/new_tr_alt"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:layout_width="fill_parent">
+    </EditText>
+
+    <EditText
+        android:id="@+id/tr_strength2"
+        android:layout_height="wrap_content"
+        android:hint="@string/new_tr_strength2"
+        android:inputType="textPersonName"
+        android:layout_width="fill_parent">
+    </EditText>
+
+    <Button
+        android:id="@+id/ButtonSendFeedback"
+        android:layout_height="wrap_content"
+        android:text="@string/new_tr_button"
+        android:onClick="saveThoughtRecord"
+        android:layout_width="fill_parent">
+    </Button>
+
+
+</LinearLayout>

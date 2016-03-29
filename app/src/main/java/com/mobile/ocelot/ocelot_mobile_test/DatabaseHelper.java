@@ -28,9 +28,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE "+ tr_table +" ("+col_tr_id+ " INTEGER PRIMARY KEY AUTOINCREMENT, "+
-                col_tr_activity+ " TEXT, " + col_emotion + " TEXT, " + col_strength +" INTEGER, " +
-                col_thoughts +" TEXT, " + col_alternatives +" TEXT, "+ col_strength2 +"INTEGER, " +
-                col_tr_date +"DEFAULT CURRENT_TIMESTAMP NOT NULL)");
+                col_tr_activity+ " TEXT, " + col_emotion + " TEXT, " + col_strength +" TEXT, " +
+                col_thoughts +" TEXT, " + col_alternatives +" TEXT, "+ col_strength2 +" TEXT, " +
+                col_tr_date +" DEFAULT CURRENT_TIMESTAMP NOT NULL)");
     }
 
     @Override

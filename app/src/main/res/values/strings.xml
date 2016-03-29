@@ -18,4 +18,13 @@
     <string name="title_activity_old_thought_record">Past Thought Records</string>
     <string name="title_activity_activity_log">Past Activity Logs</string>
     <string name="title_activity_new_activity_log">New Activity Log</string>
+    <string name="title_activity_new_tr">New Thought Record</string>
+
+    <string name="new_tr_act">What are you doing right now?</string>
+    <string name="new_tr_thoughts">What thoughts are you having?</string>
+    <string name="new_tr_feeling">What is your main emotion?</string>
+    <string name="new_tr_strength1">How strong is it? (1-100)</string>
+    <string name="new_tr_alt">Think of some alternative responses</string>
+    <string name="new_tr_strength2">How strong is the emotion now? (1-100)</string>
+    <string name="new_tr_button">Save thought record</string>
 </resources>
