@@ -1,5 +1,6 @@
 package com.mobile.ocelot.ocelot_mobile_test;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -64,6 +65,6 @@ public class NewThoughtRecord extends MainActivity {
         app_db.execSQL(add_record);
         Log.d("New Thought Record", "New record added");
 
-        setContentView(R.layout.new_tr_main);
+        startActivity(new Intent(this, NewThoughtRecord.class));
     }
 }
