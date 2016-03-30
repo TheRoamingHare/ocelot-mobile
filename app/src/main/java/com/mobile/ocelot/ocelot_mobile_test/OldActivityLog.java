@@ -61,7 +61,7 @@ public class OldActivityLog extends MainActivity {
 
         year = b.getInt("year");
 
-        dateView = (TextView) findViewById(R.id.date_title);
+        dateView = (TextView) findViewById(R.id.date_titleAL);
         showDate();
 
         String get_records = "SELECT * FROM Activity_Log WHERE date(Date) = date('" +
@@ -78,18 +78,18 @@ public class OldActivityLog extends MainActivity {
 
     private void createViews(String selectQuery){
         Log.d("VIEW ---------> ", selectQuery);
-        //selectQuery = "SELECT * FROM Thought_Records";
+        //selectQuery = "SELECT * FROM Activity_Log";
         Cursor c = app_db.rawQuery(selectQuery, null);
         //String test = c.getString(c.getColumnIndex("Thoughts"));
         //Log.d("VIEW ---------> ", test);
 
         String[] records = new String[c.getCount()];
         String activity;
-        Log.d("VIEWS ---------> ", "here");
+        Log.d("LOGS ---------> ", Integer.toString(c.getCount()));
         if (c.moveToFirst()) {
             int i = 0;
             while (!c.isAfterLast()) {
-                activity = c.getString(c.getColumnIndex("Activities"));
+                activity = c.getString(c.getColumnIndex("Activity"));
                 Log.d("ACTIVITY ---------> ", activity);
                 records[i] = activity;
                 c.moveToNext();
@@ -97,6 +97,7 @@ public class OldActivityLog extends MainActivity {
             }
         }
         c.close();
+
         Log.d("VIEWS ---------> ", Integer.toString(records.length));
 
         for (int j=0; j< records.length; j++){
@@ -104,6 +105,7 @@ public class OldActivityLog extends MainActivity {
             tv.setText(records[j]);
             tv.setTextAppearance(this, android.R.style.TextAppearance_Medium);
             layout.addView(tv);
+
         }
     }
 }

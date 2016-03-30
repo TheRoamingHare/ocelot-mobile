@@ -5,11 +5,11 @@
               android:id="@+id/view_al">
 
     <TextView
-        android:id="@+id/date_title"
+        android:id="@+id/date_titleAL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button1"
-        android:layout_below="@+id/textView2"
+        android:layout_alignRight="@+id/button1AL"
+        android:layout_below="@+id/textView2AL"
         android:layout_marginTop="72dp"
         android:text=""
         android:textSize="10pt" />

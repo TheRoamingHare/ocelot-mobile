@@ -52,7 +52,7 @@ public class ActivityLog extends MainActivity implements View.OnClickListener {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        dateView = (TextView) findViewById(R.id.textView3);
+        dateView = (TextView) findViewById(R.id.textView3AL);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
 
@@ -62,9 +62,9 @@ public class ActivityLog extends MainActivity implements View.OnClickListener {
     }
 
     @SuppressWarnings("deprecation")
-    public void setDate(View view) {
+    public void setDateAL(View view) {
         showDialog(999);
-        Toast.makeText(getApplicationContext(), "ca", Toast.LENGTH_SHORT)
+        Toast.makeText(getApplicationContext(), "caL", Toast.LENGTH_SHORT)
                 .show();
     }
 
@@ -83,18 +83,11 @@ public class ActivityLog extends MainActivity implements View.OnClickListener {
         return null;
     }
 
-    private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-            showDate(arg1, arg2+1, arg3);
-        }
-    };
-
     private void showDate(int year, int month, int day) {
         dateView.setText(new StringBuilder().append(day).append("/")
                 .append(month).append("/").append(year));
 
-        Button tr_button = (Button) findViewById(R.id.ButtonSendDate);
+        Button tr_button = (Button) findViewById(R.id.ButtonSendDateAL);
         tr_button.setOnClickListener(this);
     }
 
