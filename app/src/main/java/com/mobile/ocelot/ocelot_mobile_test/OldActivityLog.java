@@ -1,6 +1,5 @@
 package com.mobile.ocelot.ocelot_mobile_test;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -8,31 +7,27 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
 
 /**
- * Created by Abby on 3/29/16.
+ * Created by Cameron on 3/29/16.
  */
-public class OldThoughtRecordViewer extends MainActivity {
+public class OldActivityLog extends MainActivity {
 
     int day, month, year;
     TextView dateView;
     LinearLayout layout;
     TextView tv;
-    Button b;
-    String[] recs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.record_viewer);
+        setContentView(R.layout.old_activity_log);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -69,10 +64,10 @@ public class OldThoughtRecordViewer extends MainActivity {
         dateView = (TextView) findViewById(R.id.date_title);
         showDate();
 
-        String get_records = "SELECT * FROM Thought_Records WHERE date(Date) = date('" +
+        String get_records = "SELECT * FROM Activity_Log WHERE date(Date) = date('" +
                 year + "-" + month_string + "-" + day_string +"');";
 
-        layout = (LinearLayout) findViewById(R.id.view_tr);
+        layout = (LinearLayout) findViewById(R.id.view_al);
         createViews(get_records);
     }
 
@@ -83,48 +78,31 @@ public class OldThoughtRecordViewer extends MainActivity {
 
     private void createViews(String selectQuery){
         Log.d("VIEW ---------> ", selectQuery);
+        //selectQuery = "SELECT * FROM Thought_Records";
         Cursor c = app_db.rawQuery(selectQuery, null);
+        //String test = c.getString(c.getColumnIndex("Thoughts"));
+        //Log.d("VIEW ---------> ", test);
 
         String[] records = new String[c.getCount()];
-        String thought;
+        String activity;
         Log.d("VIEWS ---------> ", "here");
         if (c.moveToFirst()) {
             int i = 0;
             while (!c.isAfterLast()) {
-                thought = c.getString(c.getColumnIndex("Thoughts"));
-                Log.d("THOUGHT ---------> ", thought);
-                records[i] = thought;
+                activity = c.getString(c.getColumnIndex("Activities"));
+                Log.d("ACTIVITY ---------> ", activity);
+                records[i] = activity;
                 c.moveToNext();
                 i++;
             }
         }
         c.close();
-
-        recs = Arrays.copyOf(records, records.length);
+        Log.d("VIEWS ---------> ", Integer.toString(records.length));
 
         for (int j=1; j< records.length; j++){
             tv = new TextView(this);
             tv.setText(records[j]);
-            tv.setTextAppearance(this, android.R.style.TextAppearance_Large);
             layout.addView(tv);
-
-//            b = new Button(this);
-//            b.setText("View");
-//            //b.setTag(j, records[j]);
-//            b.setId(j+1);
-//            b.setOnClickListener(btnclick);
-//            layout.addView(b);
         }
     }
-
-    Button.OnClickListener btnclick = new Button.OnClickListener(){
-
-        @Override
-        public void onClick(View v) {
-            // TODO Auto-generated method stub
-
-            Button button = (Button) v;
-        }
-
-    };
 }
