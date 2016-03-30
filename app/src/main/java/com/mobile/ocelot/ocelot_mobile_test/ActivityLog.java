@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -34,6 +35,7 @@ public class ActivityLog extends MainActivity implements View.OnClickListener {
     private Calendar calendar;
     private TextView dateView;
     private int year, month, day;
+    public int sendYear, sendMonth, sendDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,10 @@ public class ActivityLog extends MainActivity implements View.OnClickListener {
         dateView.setText(new StringBuilder().append(day).append("/")
                 .append(month).append("/").append(year));
 
+        sendDay = day;
+        sendMonth = month;
+        sendYear = year;
+
         Button tr_button = (Button) findViewById(R.id.ButtonSendDateAL);
         tr_button.setOnClickListener(this);
     }
@@ -95,9 +101,12 @@ public class ActivityLog extends MainActivity implements View.OnClickListener {
     public void onClick(View view){
         Intent intent = new Intent(this, OldActivityLog.class);
         Bundle b = new Bundle();
-        b.putInt("day", day);
-        b.putInt("month", month + 1);
-        b.putInt("year", year);
+        b.putInt("day", sendDay);
+        b.putInt("month", sendMonth);
+        b.putInt("year", sendYear);
+        Log.d("SEND DATE --->", Integer.toString(sendDay));
+        Log.d("SEND DATE --->", Integer.toString(sendMonth));
+        Log.d("SEND DATE --->", Integer.toString(sendYear));
         intent.putExtras(b);
         startActivity(intent);
         finish();

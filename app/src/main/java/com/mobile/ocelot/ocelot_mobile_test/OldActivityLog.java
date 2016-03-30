@@ -98,12 +98,35 @@ public class OldActivityLog extends MainActivity {
         }
         c.close();
 
-        Log.d("VIEWS ---------> ", Integer.toString(records.length));
+        c = app_db.rawQuery(selectQuery, null);
+
+        String[] moods = new String[c.getCount()];
+        String mood;
+        Log.d("MOODS ---------> ", Integer.toString(c.getCount()));
+        if (c.moveToFirst()) {
+            int i = 0;
+            while (!c.isAfterLast()) {
+                mood = c.getString(c.getColumnIndex("Mood"));
+                Log.d("MOOD -------> ", mood);
+                moods[i] = mood;
+                c.moveToNext();
+                i++;
+            }
+        }
+        c.close();
+
+//        Log.d("VIEWS ---------> ", Integer.toString(records.length));
 
         for (int j=0; j< records.length; j++){
             tv = new TextView(this);
             tv.setText(records[j]);
             tv.setTextAppearance(this, android.R.style.TextAppearance_Medium);
+            layout.addView(tv);
+
+            tv = new TextView(this);
+            tv.setText("Mood Score: " + moods[j]);
+            tv.setTextAppearance(this, android.R.style.TextAppearance_Large);
+            Log.d("MOOD FOR VIEW ----> ", records[j]);
             layout.addView(tv);
 
         }
