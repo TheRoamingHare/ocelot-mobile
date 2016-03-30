@@ -1,5 +1,6 @@
 package com.mobile.ocelot.ocelot_mobile_test;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -7,12 +8,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * Created by Abby on 3/29/16.
@@ -23,6 +26,8 @@ public class OldThoughtRecordViewer extends MainActivity {
     TextView dateView;
     LinearLayout layout;
     TextView tv;
+    Button b;
+    String[] recs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,10 +83,7 @@ public class OldThoughtRecordViewer extends MainActivity {
 
     private void createViews(String selectQuery){
         Log.d("VIEW ---------> ", selectQuery);
-        //selectQuery = "SELECT * FROM Thought_Records";
         Cursor c = app_db.rawQuery(selectQuery, null);
-        //String test = c.getString(c.getColumnIndex("Thoughts"));
-        //Log.d("VIEW ---------> ", test);
 
         String[] records = new String[c.getCount()];
         String thought;
@@ -97,12 +99,32 @@ public class OldThoughtRecordViewer extends MainActivity {
             }
         }
         c.close();
-        Log.d("VIEWS ---------> ", Integer.toString(records.length));
+
+        recs = Arrays.copyOf(records, records.length);
 
         for (int j=1; j< records.length; j++){
             tv = new TextView(this);
             tv.setText(records[j]);
+            tv.setTextAppearance(this, android.R.style.TextAppearance_Large);
             layout.addView(tv);
+
+            b = new Button(this);
+            b.setText("View");
+            //b.setTag(j, records[j]);
+            b.setId(j+1);
+            b.setOnClickListener(btnclick);
+            layout.addView(b);
         }
     }
+
+    Button.OnClickListener btnclick = new Button.OnClickListener(){
+
+        @Override
+        public void onClick(View v) {
+            // TODO Auto-generated method stub
+
+            Button button = (Button) v;
+        }
+
+    };
 }
