@@ -10,17 +10,15 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
  * Created by Abby on 3/29/16.
  */
-public class OldThoughtRecordViewer extends MainActivity {
+public class ThoughtRecordViewer extends MainActivity {
 
     int day, month, year;
     TextView dateView;
@@ -85,53 +83,6 @@ public class OldThoughtRecordViewer extends MainActivity {
         Log.d("VIEW ---------> ", selectQuery);
         Cursor c = app_db.rawQuery(selectQuery, null);
 
-        String[] records = new String[c.getCount()];
-        String thought;
-        Log.d("VIEWS ---------> ", "here");
-        if (c.moveToFirst()) {
-            int i = 0;
-            while (!c.isAfterLast()) {
-                thought = c.getString(c.getColumnIndex("Thoughts"));
-                Log.d("THOUGHT ---------> ", thought);
-                records[i] = thought;
-                c.moveToNext();
-                i++;
-            }
-        }
-        c.close();
-
-        recs = Arrays.copyOf(records, records.length);
-
-        for (int j=1; j< records.length; j++){
-            tv = new TextView(this);
-            tv.setText(records[j]);
-            tv.setTextAppearance(this, android.R.style.TextAppearance_Large);
-            layout.addView(tv);
-
-            b = new Button(this);
-            b.setText("View");
-            //b.setTag(j, records[j]);
-            b.setId(j+1);
-            b.setOnClickListener(btnclick);
-            layout.addView(b);
-        }
     }
 
-    Button.OnClickListener btnclick = new Button.OnClickListener(){
-
-        @Override
-        public void onClick(View v) {
-            Button button = (Button) v;
-            int id = button.getId();
-            String thought = recs[id-1];
-
-//            Intent intent = new Intent(this, ThoughtRecordViewer.class);
-//            Bundle b = new Bundle();
-//            b.putString("thought", thought);
-//            intent.putExtras(b);
-//            startActivity(intent);
-//            finish();
-        }
-
-    };
 }
