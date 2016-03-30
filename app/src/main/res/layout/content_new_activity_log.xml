@@ -7,18 +7,19 @@
               android:layout_height="match_parent"
               app:layout_behavior="@string/appbar_scrolling_view_behavior"
               tools:showIn="@layout/activity_new_activity_log">
-    <EditText
+    <EditText android:id="@+id/al_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/edit_message" />
-    <EditText
+    <EditText android:id="@+id/al_mood"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/edit_mood" />
-    <Button
+    <Button android:id="@+id/al_send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
+        android:onClick="saveActivityLog"
         android:text="@string/button_send" />
 </LinearLayout>
 
