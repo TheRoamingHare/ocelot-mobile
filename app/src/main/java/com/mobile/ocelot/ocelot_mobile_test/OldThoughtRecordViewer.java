@@ -87,7 +87,7 @@ public class OldThoughtRecordViewer extends MainActivity {
 
         String[] records = new String[c.getCount()];
         String thought;
-        Log.d("VIEWS ---------> ", "here");
+        Log.d("RECORDS ---------> ", Integer.toString(c.getCount()));
         if (c.moveToFirst()) {
             int i = 0;
             while (!c.isAfterLast()) {
@@ -100,20 +100,44 @@ public class OldThoughtRecordViewer extends MainActivity {
         }
         c.close();
 
+        c = app_db.rawQuery(selectQuery, null);
+
+        String[] alts = new String[c.getCount()];
+        String alt;
+        Log.d("RECORDS ---------> ", Integer.toString(c.getCount()));
+        if (c.moveToFirst()) {
+            int i = 0;
+            while (!c.isAfterLast()) {
+                alt = c.getString(c.getColumnIndex("Alternatives"));
+                Log.d("ALTERNATIVE -------> ", alt);
+                alts[i] = alt;
+                c.moveToNext();
+                i++;
+            }
+        }
+        c.close();
+
         recs = Arrays.copyOf(records, records.length);
 
-        for (int j=1; j< records.length; j++){
+        for (int j=0; j< records.length; j++){
             tv = new TextView(this);
             tv.setText(records[j]);
-            tv.setTextAppearance(this, android.R.style.TextAppearance_Large);
+            tv.setTextAppearance(this, android.R.style.TextAppearance_Medium);
+            Log.d("THOUGHT FOR VIEW ----> ",records[j]);
             layout.addView(tv);
 
-            b = new Button(this);
-            b.setText("View");
-            //b.setTag(j, records[j]);
-            b.setId(j+1);
-            b.setOnClickListener(btnclick);
-            layout.addView(b);
+            tv = new TextView(this);
+            tv.setText("BUT " + alts[j]);
+            tv.setTextAppearance(this, android.R.style.TextAppearance_Large);
+            Log.d("ALT FOR VIEW ----> ",records[j]);
+            layout.addView(tv);
+
+//            b = new Button(this);
+//            b.setText("View");
+//            //b.setTag(j, records[j]);
+//            b.setId(j+1);
+//            b.setOnClickListener(btnclick);
+//            layout.addView(b);
         }
     }
 

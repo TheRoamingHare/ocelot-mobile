@@ -99,9 +99,10 @@ public class OldActivityLog extends MainActivity {
         c.close();
         Log.d("VIEWS ---------> ", Integer.toString(records.length));
 
-        for (int j=1; j< records.length; j++){
+        for (int j=0; j< records.length; j++){
             tv = new TextView(this);
             tv.setText(records[j]);
+            tv.setTextAppearance(this, android.R.style.TextAppearance_Medium);
             layout.addView(tv);
         }
     }
