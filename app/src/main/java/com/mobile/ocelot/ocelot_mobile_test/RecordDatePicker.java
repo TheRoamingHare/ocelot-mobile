@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +30,8 @@ public class RecordDatePicker extends MainActivity implements View.OnClickListen
     private Calendar calendar;
     private TextView dateView;
     public int year, month, day;
+
+    public int sendYear, sendMonth, sendDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +86,10 @@ public class RecordDatePicker extends MainActivity implements View.OnClickListen
         dateView.setText(new StringBuilder().append(month).append("/")
                 .append(day).append("/").append(year));
 
+        sendDay = day;
+        sendMonth = month;
+        sendYear = year;
+
         Button tr_button = (Button) findViewById(R.id.ButtonSendDate);
         tr_button.setOnClickListener(this);
     }
@@ -91,9 +98,12 @@ public class RecordDatePicker extends MainActivity implements View.OnClickListen
     public void onClick(View view){
         Intent intent = new Intent(this, OldThoughtRecordViewer.class);
         Bundle b = new Bundle();
-        b.putInt("day", day);
-        b.putInt("month", month + 1);
-        b.putInt("year", year);
+        b.putInt("day", sendDay);
+        b.putInt("month", sendMonth);
+        b.putInt("year", sendYear);
+        Log.d("SEND DATE --->",Integer.toString(sendDay));
+        Log.d("SEND DATE --->",Integer.toString(sendMonth));
+        Log.d("SEND DATE --->",Integer.toString(sendYear));
         intent.putExtras(b);
         startActivity(intent);
         finish();
