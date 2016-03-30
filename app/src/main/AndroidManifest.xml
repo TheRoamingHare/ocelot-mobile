@@ -46,6 +46,15 @@
                 android:value="com.mobile.ocelot.ocelot_mobile_test.MainActivity"/>
         </activity>
         <activity
+            android:name=".OldThoughtRecordViewer"
+            android:label="@string/title_view_tr"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mobile.ocelot.ocelot_mobile_test.MainActivity"/>
+        </activity>
+        <activity
             android:name=".ActivityLog"
             android:label="@string/title_activity_activity_log"
             android:theme="@style/AppTheme.NoActionBar">

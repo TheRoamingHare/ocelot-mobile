@@ -3,6 +3,7 @@ package com.mobile.ocelot.ocelot_mobile_test;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -12,6 +13,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,12 +23,12 @@ import java.util.Calendar;
 /**
  * Created by Abby on 3/29/16.
  */
-public class RecordDatePicker extends MainActivity {
+public class RecordDatePicker extends MainActivity implements View.OnClickListener {
 
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
-    private int year, month, day;
+    public int year, month, day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class RecordDatePicker extends MainActivity {
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
         showDate(year, month + 1, day);
+
     }
 
     @SuppressWarnings("deprecation")
@@ -77,8 +80,25 @@ public class RecordDatePicker extends MainActivity {
     };
 
     private void showDate(int year, int month, int day) {
-        dateView.setText(new StringBuilder().append(day).append("/")
-                .append(month).append("/").append(year));
+        dateView.setText(new StringBuilder().append(month).append("/")
+                .append(day).append("/").append(year));
+
+        Button tr_button = (Button) findViewById(R.id.ButtonSendDate);
+        tr_button.setOnClickListener(this);
     }
+
+    @Override
+    public void onClick(View view){
+        Intent intent = new Intent(this, OldThoughtRecordViewer.class);
+        Bundle b = new Bundle();
+        b.putInt("day", day);
+        b.putInt("month", month + 1);
+        b.putInt("year", year);
+        intent.putExtras(b);
+        startActivity(intent);
+        finish();
+        //startActivity(new Intent(this, OldThoughtRecordViewer.class));
+    }
+
 
 }

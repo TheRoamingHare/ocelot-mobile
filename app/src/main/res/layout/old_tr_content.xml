@@ -43,4 +43,13 @@
         android:text="@string/date_selected"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+
+    <Button
+        android:id="@+id/ButtonSendDate"
+        android:layout_height="wrap_content"
+        android:text="@string/date_button"
+        android:onClick="getThoughtRecords"
+        android:layout_width="fill_parent">
+    </Button>
+
 </LinearLayout>

@@ -12,13 +12,15 @@
 
     <string name="date_label_set">Choose the day you wish to view</string>
     <string name="date_button_set">Select Date</string>
-    <string name="date_view_set">The Date is: </string>
+    <string name="date_view_set">Viewing Records for: </string>
     <string name="date_selected"></string>
+    <string name="date_button">Get records</string>
 
     <string name="title_activity_old_thought_record">Past Thought Records</string>
     <string name="title_activity_activity_log">Past Activity Logs</string>
     <string name="title_activity_new_activity_log">New Activity Log</string>
     <string name="title_activity_new_tr">New Thought Record</string>
+    <string name="title_view_tr">Thought Records</string>
 
     <string name="new_tr_act">What are you doing right now?</string>
     <string name="new_tr_thoughts">What thoughts are you having?</string>
