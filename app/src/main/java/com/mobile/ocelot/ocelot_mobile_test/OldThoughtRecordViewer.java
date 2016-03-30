@@ -42,6 +42,7 @@ public class OldThoughtRecordViewer extends MainActivity {
         navigationView.setNavigationItemSelectedListener(this);
 
         Bundle b = getIntent().getExtras();
+
         day = b.getInt("day");
         String day_string;
         if (day < 10){
@@ -49,13 +50,22 @@ public class OldThoughtRecordViewer extends MainActivity {
         }else{
             day_string = Integer.toString(day);
         }
+
         month = b.getInt("month");
+        String month_string;
+        if (month < 10){
+            month_string = "0"+Integer.toString(month);
+        }else{
+            month_string = Integer.toString(month);
+        }
+
         year = b.getInt("year");
+
         dateView = (TextView) findViewById(R.id.date_title);
         showDate();
 
         String get_records = "SELECT * FROM Thought_Records WHERE date(Date) = date('" +
-                year + "-" + month + "-" + day_string +"');";
+                year + "-" + month_string + "-" + day_string +"');";
 
         layout = (LinearLayout) findViewById(R.id.view_tr);
         createViews(get_records);
@@ -68,6 +78,7 @@ public class OldThoughtRecordViewer extends MainActivity {
 
     private void createViews(String selectQuery){
         Log.d("VIEW ---------> ", selectQuery);
+        //selectQuery = "SELECT * FROM Thought_Records";
         Cursor c = app_db.rawQuery(selectQuery, null);
         //String test = c.getString(c.getColumnIndex("Thoughts"));
         //Log.d("VIEW ---------> ", test);
