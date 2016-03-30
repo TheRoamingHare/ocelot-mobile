@@ -1,6 +1,7 @@
 package com.mobile.ocelot.ocelot_mobile_test;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -20,13 +21,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class ActivityLog extends MainActivity {
+public class ActivityLog extends MainActivity implements View.OnClickListener {
 
     private DatePicker datePicker;
     private Calendar calendar;
@@ -66,7 +68,7 @@ public class ActivityLog extends MainActivity {
                 .show();
     }
 
-    private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
+    private DatePickerDialog.OnDateSetListener myDateListener2 = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
             showDate(arg1, arg2+1, arg3);
@@ -76,13 +78,36 @@ public class ActivityLog extends MainActivity {
     @Override
     protected Dialog onCreateDialog(int id) {
         if (id == 999) {
-            return new DatePickerDialog(this, myDateListener, year, month, day);
+            return new DatePickerDialog(this, myDateListener2, year, month, day);
         }
         return null;
     }
 
+    private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
+            showDate(arg1, arg2+1, arg3);
+        }
+    };
+
     private void showDate(int year, int month, int day) {
         dateView.setText(new StringBuilder().append(day).append("/")
                 .append(month).append("/").append(year));
+
+        Button tr_button = (Button) findViewById(R.id.ButtonSendDate);
+        tr_button.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view){
+        Intent intent = new Intent(this, OldActivityLog.class);
+        Bundle b = new Bundle();
+        b.putInt("day", day);
+        b.putInt("month", month + 1);
+        b.putInt("year", year);
+        intent.putExtras(b);
+        startActivity(intent);
+        finish();
+        //startActivity(new Intent(this, OldThoughtRecordViewer.class));
     }
 }
