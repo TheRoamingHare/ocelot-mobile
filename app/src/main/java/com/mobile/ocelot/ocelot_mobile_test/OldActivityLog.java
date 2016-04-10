@@ -119,13 +119,13 @@ public class OldActivityLog extends MainActivity {
 
         for (int j=0; j< records.length; j++){
             tv = new TextView(this);
-            tv.setText(records[j]);
-            tv.setTextAppearance(this, android.R.style.TextAppearance_Medium);
+            tv.setText("Activity: " + records[j]);
+            tv.setTextAppearance(this, android.R.style.TextAppearance_Large);
             layout.addView(tv);
 
             tv = new TextView(this);
             tv.setText("Mood Score: " + moods[j]);
-            tv.setTextAppearance(this, android.R.style.TextAppearance_Large);
+            tv.setTextAppearance(this, android.R.style.TextAppearance_Medium);
             Log.d("MOOD FOR VIEW ----> ", records[j]);
             layout.addView(tv);
 

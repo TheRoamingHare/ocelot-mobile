@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.view.View.OnClickListener;
+
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -26,6 +28,7 @@ public class NewThoughtRecord extends MainActivity {
     EditText s1F;
     EditText s2F;
     EditText alt_respF;
+    View sender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,78 @@ public class NewThoughtRecord extends MainActivity {
         s1F = (EditText) findViewById(R.id.tr_strength1);
         s2F = (EditText) findViewById(R.id.tr_strength2);
         alt_respF = (EditText) findViewById(R.id.tr_alt_resp);
+        sender = (View) findViewById(R.id.ButtonSendFeedback);
+
+
+        findViewById(R.id.ButtonSendFeedback).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                boolean stat = true;
+                final String act_ = activityF.getText().toString();
+                final String thought_ = thoughtsF.getText().toString();
+                final String feeling_ = feelingF.getText().toString();
+                final String s1_ = s1F.getText().toString();
+                final String s2_ = s2F.getText().toString();
+                final String alt_ = alt_respF.getText().toString();
+
+
+                if (!isValidText(act_)) {
+                    activityF.setError("Empty Activity");
+                    stat = false;
+                }
+
+                if (!isValidText(thought_)) {
+                    thoughtsF.setError("Empty Thought");
+                    stat = false;
+                }
+
+                if (!isValidText(feeling_)) {
+                    feelingF.setError("Empty Feeling");
+                    stat = false;
+                }
+
+                if (!isValidNumber(s1_)) {
+                    s1F.setError("Invalid Strength Score");
+                    stat = false;
+                }
+
+                if (!isValidNumber(s2_)) {
+                    s2F.setError("Invalid Strength Score");
+                    stat = false;
+                }
+
+                if (!isValidText(alt_)) {
+                    alt_respF.setError("Empty Alternative");
+                    stat = false;
+                }
+
+                if (stat) {
+                    saveThoughtRecord(sender);
+                }
+            }
+        });
+    }
+
+    private boolean isValidText(String act) {
+        if (act != null && act.length() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isValidNumber(String mood) {
+        int i;
+        try {
+            i = Integer.parseInt(mood);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        if (i >= 0 && i <= 100) {
+            return true;
+        }
+        return false;
     }
 
     public void saveThoughtRecord(View button){

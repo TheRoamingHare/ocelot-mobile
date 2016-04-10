@@ -17,6 +17,7 @@ import android.widget.EditText;
 public class NewActivityLog extends MainActivity {
 
     EditText activityF, moodF;
+    View send;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +38,54 @@ public class NewActivityLog extends MainActivity {
 
         activityF = (EditText) findViewById(R.id.al_activity);
         moodF = (EditText) findViewById(R.id.al_mood);
+        send = (View) findViewById(R.id.al_send);
 
 
+        findViewById(R.id.al_send).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                boolean stat = true;
+                final String act = activityF.getText().toString();
+                final String mood = moodF.getText().toString();
+
+                if (!isValidActivity(act)) {
+                    activityF.setError("Empty Activity");
+                    stat = false;
+                }
+
+                if (!isValidMood(mood)) {
+                    moodF.setError("Invalid Mood Score");
+                    stat = false;
+                }
+
+                if (stat) {
+                    saveActivityLog(send);
+                }
+            }
+        });
+
+    }
+
+    private boolean isValidActivity(String act) {
+        if (act != null && act.length() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isValidMood(String mood) {
+        int i;
+        try {
+            i = Integer.parseInt(mood);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        if (i >= 0 && i <= 100) {
+            return true;
+        }
+        return false;
     }
 
     public void saveActivityLog(View button){

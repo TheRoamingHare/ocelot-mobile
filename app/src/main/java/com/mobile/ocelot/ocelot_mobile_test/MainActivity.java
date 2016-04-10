@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
+import android.view.View.OnClickListener;
 import android.widget.EditText;
 
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final String TAG = "MainActivity";
     public SQLiteDatabase app_db;
     private EditText activityF, moodF;
+    private View send;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,53 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         activityF = (EditText) findViewById(R.id.al_activity_main);
         moodF = (EditText) findViewById(R.id.al_mood_main);
+        send = (View) findViewById(R.id.al_send_main);
+
+
+        findViewById(R.id.al_send_main).setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                boolean stat = true;
+                final String act = activityF.getText().toString();
+                final String mood = moodF.getText().toString();
+
+                if (!isValidActivity(act)) {
+                    activityF.setError("Empty Activity");
+                    stat = false;
+                }
+
+                if (!isValidMood(mood)) {
+                    moodF.setError("Invalid Mood Score");
+                    stat = false;
+                }
+
+                if (stat) {
+                    saveActivityLogMain(send);
+                }
+            }
+        });
+    }
+
+    private boolean isValidActivity(String act) {
+        if (act != null && act.length() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isValidMood(String mood) {
+        int i;
+        try {
+            i = Integer.parseInt(mood);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        if (i >= 0 && i <= 100) {
+            return true;
+        }
+        return false;
     }
 
     public void saveActivityLogMain(View button){
