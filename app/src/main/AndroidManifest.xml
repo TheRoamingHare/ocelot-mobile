@@ -10,7 +10,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_new_activity_log"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -22,6 +23,7 @@
             android:name=".DisplayMessageActivity"
             android:label="@string/title_activity_display_message"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -31,6 +33,7 @@
             android:name=".RecordDatePicker"
             android:label="@string/title_activity_old_thought_record"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -40,6 +43,7 @@
             android:name=".NewThoughtRecord"
             android:label="@string/title_activity_new_tr"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -49,6 +53,7 @@
             android:name=".OldThoughtRecordViewer"
             android:label="@string/title_view_tr"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -57,15 +62,18 @@
         <activity
             android:name=".ActivityLog"
             android:label="@string/title_activity_activity_log"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".NewActivityLog"
             android:label="@string/title_activity_new_activity_log"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".OldActivityLog"
                   android:label="Activity Log"
+                  android:screenOrientation="portrait"
                   android:parentActivityName=".MainActivity"
                   android:theme="@style/AppTheme.NoActionBar">
             <meta-data

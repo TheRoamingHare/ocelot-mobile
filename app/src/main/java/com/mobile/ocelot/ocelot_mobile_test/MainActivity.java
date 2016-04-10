@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
     private static final String TAG = "MainActivity";
     public SQLiteDatabase app_db;
+    private EditText activityF, moodF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         DatabaseHelper db_help = new DatabaseHelper(this.getApplicationContext());
         app_db = db_help.getWritableDatabase();
+
+        activityF = (EditText) findViewById(R.id.al_activity_main);
+        moodF = (EditText) findViewById(R.id.al_mood_main);
+    }
+
+    public void saveActivityLogMain(View button){
+        String activity = activityF.getText().toString();
+        String mood = moodF.getText().toString();
+
+
+        String add_record = "INSERT INTO Activity_Log (Activity,Mood)" +
+                "VALUES ('"+activity+"','"+mood+"')";
+        app_db.execSQL(add_record);
+        Log.d("New Activity Log", "New activity log added");
+
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override
@@ -80,14 +97,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
-    /** Called when the user clicks the Send button */
-    public void sendMessage(View view) {
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }
+//    /** Called when the user clicks the Send button */
+//    public void sendMessage(View view) {
+//        Intent intent = new Intent(this, DisplayMessageActivity.class);
+//        EditText editText = (EditText) findViewById(R.id.edit_message);
+//        String message = editText.getText().toString();
+//        intent.putExtra(EXTRA_MESSAGE, message);
+//        startActivity(intent);
+//    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
