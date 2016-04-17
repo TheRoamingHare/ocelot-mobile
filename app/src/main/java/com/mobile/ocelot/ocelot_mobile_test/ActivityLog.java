@@ -86,8 +86,8 @@ public class ActivityLog extends MainActivity implements View.OnClickListener {
     }
 
     private void showDate(int year, int month, int day) {
-        dateView.setText(new StringBuilder().append(day).append("/")
-                .append(month).append("/").append(year));
+        dateView.setText(new StringBuilder().append(month).append("/")
+                .append(day).append("/").append(year));
 
         sendDay = day;
         sendMonth = month;

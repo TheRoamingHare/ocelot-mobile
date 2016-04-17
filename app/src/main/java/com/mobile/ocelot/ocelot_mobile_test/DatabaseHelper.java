@@ -13,7 +13,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static String dbName = "ocelot-db";
     private static String tr_table = "Thought_Records";
-private static String col_tr_id = "tr_ID";
+    private static String col_tr_id = "tr_ID";
     private static String col_tr_activity = "Activity";
     private static String col_emotion = "Emotion";
     private static String col_strength = "Strength_Before";
@@ -28,16 +28,18 @@ private static String col_tr_id = "tr_ID";
     private static String col_mood = "Mood";
     private static String col_al_date = "Date";
 
+    private static final int DATABASE_VERSION = 3;
+
     private Context cont;
 
     public DatabaseHelper(Context context) {
-        super(context, dbName, null,2); // changed to version 2 for AL upgrade
+        super(context, dbName, null, DATABASE_VERSION); // changed to version 2 for AL upgrade
         this.cont = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE "+ tr_table +"("+col_tr_id+ " INTEGER PRIMARY KEY AUTOINCREMENT, "+
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+ tr_table +"("+col_tr_id+ " INTEGER PRIMARY KEY AUTOINCREMENT, "+
                 col_tr_activity+ " TEXT, " + col_emotion + " TEXT, " + col_strength +" TEXT, " +
                 col_thoughts +" TEXT, " + col_alternatives +" TEXT, "+ col_strength2 +" TEXT, " +
                 col_tr_date +" DEFAULT CURRENT_TIMESTAMP NOT NULL);");
@@ -45,7 +47,7 @@ private static String col_tr_id = "tr_ID";
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("CREATE TABLE " + al_table + "(" + col_al_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + al_table + "(" + col_al_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 col_al_activity + " TEXT, " + col_mood + " INTEGER, " +
                 col_al_date + " DEFAULT CURRENT_TIMESTAMP NOT NULL);");
     }

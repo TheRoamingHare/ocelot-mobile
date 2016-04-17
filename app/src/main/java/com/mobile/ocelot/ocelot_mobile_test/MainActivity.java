@@ -19,6 +19,9 @@ import android.view.MenuItem;
 import android.content.Intent;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -106,10 +109,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String mood = moodF.getText().toString();
 
 
-        String add_record = "INSERT INTO Activity_Log (Activity,Mood)" +
+        String add_record = "INSERT INTO Activity_Log (Activity, Mood)" +
                 "VALUES ('"+activity+"','"+mood+"')";
         app_db.execSQL(add_record);
         Log.d("New Activity Log", "New activity log added");
+
+        Toast.makeText(getApplicationContext(), "New activity log saved", Toast.LENGTH_SHORT).show();
+
+        Calendar today = Calendar.getInstance();
+        int day = today.get(Calendar.DAY_OF_MONTH);
+        int month = today.get(Calendar.MONTH);
+        int year = today.get(Calendar.YEAR);
+
+        Intent intent = new Intent(this, OldActivityLog.class);
+        Bundle b = new Bundle();
+        b.putInt("day", day);
+        b.putInt("month", month+1);
+        b.putInt("year", year);
+        intent.putExtras(b);
+        startActivity(intent);
+        finish();
 
         startActivity(new Intent(this, MainActivity.class));
     }

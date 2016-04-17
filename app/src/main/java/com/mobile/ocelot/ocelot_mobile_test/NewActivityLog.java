@@ -12,6 +12,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 
 public class NewActivityLog extends MainActivity {
@@ -98,6 +101,22 @@ public class NewActivityLog extends MainActivity {
         app_db.execSQL(add_record);
         Log.d("New Activity Log", "New activity log added");
 
-        startActivity(new Intent(this, NewActivityLog.class));
+        Toast.makeText(getApplicationContext(), "New activity log saved", Toast.LENGTH_SHORT).show();
+
+        Calendar today = Calendar.getInstance();
+        int day = today.get(Calendar.DAY_OF_MONTH);
+        int month = today.get(Calendar.MONTH);
+        int year = today.get(Calendar.YEAR);
+
+        Intent intent = new Intent(this, OldActivityLog.class);
+        Bundle b = new Bundle();
+        b.putInt("day", day);
+        b.putInt("month", month+1);
+        b.putInt("year", year);
+        intent.putExtras(b);
+        startActivity(intent);
+        finish();
+
+        //startActivity(new Intent(this, NewActivityLog.class));
     }
 }
