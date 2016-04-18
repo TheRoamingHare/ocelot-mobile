@@ -1,0 +1,21 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=1F:27:E2:0D:BC:5B:E5:3C:8A:07:C5:F0:DC:6A:8E:42:D7:02:7F:3A%3Bcom.mobile.ocelot.ocelot_mobile_test
+
+    You can also add your credentials to an existing key, using this line:
+    1F:27:E2:0D:BC:5B:E5:3C:8A:07:C5:F0:DC:6A:8E:42:D7:02:7F:3A;com.mobile.ocelot.ocelot_mobile_test
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyAAatmN9FXFdodnvWhL8kqf_36X_nEBzIA
+    </string>
+</resources>

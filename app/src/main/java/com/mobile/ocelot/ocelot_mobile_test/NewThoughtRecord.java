@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.view.View.OnClickListener;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -140,6 +141,22 @@ public class NewThoughtRecord extends MainActivity {
         app_db.execSQL(add_record);
         Log.d("New Thought Record", "New record added");
 
-        startActivity(new Intent(this, NewThoughtRecord.class));
+        Toast.makeText(getApplicationContext(), "New thought record saved", Toast.LENGTH_SHORT).show();
+
+        Calendar today = Calendar.getInstance();
+        int day = today.get(Calendar.DAY_OF_MONTH);
+        int month = today.get(Calendar.MONTH);
+        int year = today.get(Calendar.YEAR);
+
+        Intent intent = new Intent(this, OldThoughtRecordViewer.class);
+        Bundle b = new Bundle();
+        b.putInt("day", day);
+        b.putInt("month", month+1);
+        b.putInt("year", year);
+        intent.putExtras(b);
+        startActivity(intent);
+        finish();
+
+        //startActivity(new Intent(this, NewThoughtRecord.class));
     }
 }

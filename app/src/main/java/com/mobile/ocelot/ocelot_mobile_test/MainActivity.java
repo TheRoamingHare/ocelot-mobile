@@ -21,6 +21,9 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+
 import java.util.Calendar;
 
 
@@ -130,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent);
         finish();
 
-        startActivity(new Intent(this, MainActivity.class));
+        //startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override

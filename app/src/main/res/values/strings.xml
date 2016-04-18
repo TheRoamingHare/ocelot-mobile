@@ -29,4 +29,5 @@
     <string name="new_tr_alt">Think of some alternative responses</string>
     <string name="new_tr_strength2">How strong is the emotion now? (1-100)</string>
     <string name="new_tr_button">Save thought record</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

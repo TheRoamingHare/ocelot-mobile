@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.mobile.ocelot.ocelot_mobile_test"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mobile.ocelot.ocelot_mobile_test">
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -14,9 +21,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -27,7 +34,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mobile.ocelot.ocelot_mobile_test.MainActivity"/>
+                android:value="com.mobile.ocelot.ocelot_mobile_test.MainActivity" />
         </activity>
         <activity
             android:name=".RecordDatePicker"
@@ -37,7 +44,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mobile.ocelot.ocelot_mobile_test.MainActivity"/>
+                android:value="com.mobile.ocelot.ocelot_mobile_test.MainActivity" />
         </activity>
         <activity
             android:name=".NewThoughtRecord"
@@ -47,7 +54,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mobile.ocelot.ocelot_mobile_test.MainActivity"/>
+                android:value="com.mobile.ocelot.ocelot_mobile_test.MainActivity" />
         </activity>
         <activity
             android:name=".OldThoughtRecordViewer"
@@ -57,29 +64,43 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mobile.ocelot.ocelot_mobile_test.MainActivity"/>
+                android:value="com.mobile.ocelot.ocelot_mobile_test.MainActivity" />
         </activity>
         <activity
             android:name=".ActivityLog"
             android:label="@string/title_activity_activity_log"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".NewActivityLog"
             android:label="@string/title_activity_new_activity_log"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".OldActivityLog"
+            android:label="Activity Log"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".OldActivityLog"
-                  android:label="Activity Log"
-                  android:screenOrientation="portrait"
-                  android:parentActivityName=".MainActivity"
-                  android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mobile.ocelot.ocelot_mobile_test.MainActivity"/>
+                android:value="com.mobile.ocelot.ocelot_mobile_test.MainActivity" />
         </activity>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
     </application>
 
 </manifest>
