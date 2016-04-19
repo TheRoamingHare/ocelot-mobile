@@ -191,6 +191,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(this, NewThoughtRecord.class));
         } else if (id == R.id.record_calendar) {
             startActivity(new Intent(this, RecordDatePicker.class));
+        } else if (id == R.id.log_today) {
+            Calendar today = Calendar.getInstance();
+            int day = today.get(Calendar.DAY_OF_MONTH);
+            int month = today.get(Calendar.MONTH);
+            int year = today.get(Calendar.YEAR);
+
+            Intent intent = new Intent(this, OldActivityLog.class);
+            Bundle b = new Bundle();
+            b.putInt("day", day);
+            b.putInt("month", month + 1);
+            b.putInt("year", year);
+            intent.putExtras(b);
+            startActivity(intent);
+            finish();
+        } else if (id == R.id.record_today) {
+            Calendar today = Calendar.getInstance();
+            int day = today.get(Calendar.DAY_OF_MONTH);
+            int month = today.get(Calendar.MONTH);
+            int year = today.get(Calendar.YEAR);
+
+            Intent intent = new Intent(this, OldThoughtRecordViewer.class);
+            Bundle b = new Bundle();
+            b.putInt("day", day);
+            b.putInt("month", month + 1);
+            b.putInt("year", year);
+            intent.putExtras(b);
+            startActivity(intent);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

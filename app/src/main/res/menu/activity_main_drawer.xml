@@ -11,6 +11,10 @@
                 android:id="@+id/log_calendar"
                 android:icon="@drawable/ic_menu_send"
                 android:title="View old logs" />
+            <item
+                android:id="@+id/log_today"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="View today's logs" />
         </menu>
     </item>
 
@@ -24,6 +28,10 @@
                 android:id="@+id/record_calendar"
                 android:icon="@drawable/ic_menu_send"
                 android:title="View old records" />
+            <item
+                android:id="@+id/record_today"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="View today's records" />
         </menu>
     </item>
 

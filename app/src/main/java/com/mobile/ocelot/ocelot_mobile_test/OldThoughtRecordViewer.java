@@ -80,6 +80,8 @@ public class OldThoughtRecordViewer extends MainActivity {
 
         layout = (LinearLayout) findViewById(R.id.view_tr);
         createViews(get_records);
+
+        //layout.setOnI
     }
 
     private void showDate() {
@@ -127,7 +129,7 @@ public class OldThoughtRecordViewer extends MainActivity {
 
         for (int j=0; j< records.length; j++){
             tv = new TextView(this);
-            tv.setText(records[j]);
+            tv.setText("At first I thought... " + records[j]);
             tv.setTextAppearance(this, android.R.style.TextAppearance_Medium);
             Log.d("THOUGHT FOR VIEW ----> ",records[j]);
             layout.addView(tv);
