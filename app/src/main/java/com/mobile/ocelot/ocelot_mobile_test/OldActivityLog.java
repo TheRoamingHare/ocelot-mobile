@@ -13,6 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by Cameron on 3/29/16.
@@ -114,6 +117,7 @@ public class OldActivityLog extends MainActivity {
             }
         }
         c.close();
+
 
 //        Log.d("VIEWS ---------> ", Integer.toString(records.length));
 

@@ -219,6 +219,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent.putExtras(b);
             startActivity(intent);
             finish();
+        } else if (id == R.id.help_links){
+            startActivity(new Intent(this, HelpLinks.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

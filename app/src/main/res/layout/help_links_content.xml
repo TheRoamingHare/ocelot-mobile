@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/help_links_view">
+
+    <TextView
+        android:id="@+id/TextViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hotline for Suicide Help"
+        android:textSize="10pt"
+        android:paddingLeft="5dp"
+        android:paddingTop="60dp"
+        android:textColor="#000">
+    </TextView>
+
+    <TextView
+        android:id="@+id/help_line_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:text="@string/phone_number_suicide_help"
+        android:paddingLeft="10dp"
+        android:textColor="#ff0000"/>
+
+    <TextView
+        android:id="@+id/chat_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click here to chat with someone online for help"
+        android:textSize="10pt"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/help_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click here to see some online resources for help"
+        android:textSize="10pt"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/center_locator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter your zip code here to find help centers near you"
+        android:textSize="10pt"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Always remember that you are important and valuable and have so much to look forward to, no matter how hard it gets."
+        android:textSize="10pt"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:textColor="#cf2222" />
+
+</LinearLayout>

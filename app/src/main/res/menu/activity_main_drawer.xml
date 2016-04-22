@@ -35,4 +35,13 @@
         </menu>
     </item>
 
+    <item android:title="Get Help">
+        <menu>
+            <item
+                android:id="@+id/help_links"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Links" />
+        </menu>
+    </item>
+
 </menu>
