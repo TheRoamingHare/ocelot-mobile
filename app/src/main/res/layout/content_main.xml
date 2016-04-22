@@ -7,14 +7,28 @@
               android:layout_height="match_parent"
               app:layout_behavior="@string/appbar_scrolling_view_behavior"
               tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:id="@+id/al_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="New Activity Log"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#000"/>
+
     <EditText android:id="@+id/al_activity_main"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:hint="@string/edit_message" />
+
     <EditText android:id="@+id/al_mood_main"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:hint="@string/edit_mood" />
+
     <Button android:id="@+id/al_send_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

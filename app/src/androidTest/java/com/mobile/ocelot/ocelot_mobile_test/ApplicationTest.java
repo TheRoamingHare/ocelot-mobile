@@ -18,7 +18,6 @@ import dalvik.annotation.TestTargetClass;
 
 import static android.support.v4.app.ActivityCompat.startActivity;
 
-
 public class ApplicationTest extends ActivityInstrumentationTestCase2<RecordDatePicker> {
 
     TextView date_shown;

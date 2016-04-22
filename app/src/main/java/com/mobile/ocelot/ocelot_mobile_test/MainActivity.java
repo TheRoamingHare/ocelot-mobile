@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.new_logs) {
-            startActivity(new Intent(this, NewActivityLog.class));
+            startActivity(new Intent(this, MainActivity.class));
         } else if (id == R.id.log_calendar) {
             startActivity(new Intent(this, ActivityLog.class));
         } else if (id == R.id.new_record) {
